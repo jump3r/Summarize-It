@@ -1,0 +1,13 @@
+{
+  "name": "Summarize it!",
+  "description": "Summarizes selected text",
+  "version": "0.7",
+
+  "permissions": ["contextMenus"],
+  
+  "background": {
+    "persistent": false,
+    "scripts": ["summarizeit.js"]
+  },
+  "manifest_version": 2
+}
