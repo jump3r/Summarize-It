@@ -3,7 +3,7 @@
   "description": "Summarizes selected text on a webpage",
   "version": "0.7",
 
-  "permissions": ["contextMenus"],
+  "permissions": ["contextMenus", "http://localhost:5000/Query"],
   
   "background": {
     "persistent": false,

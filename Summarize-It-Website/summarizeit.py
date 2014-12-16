@@ -7,18 +7,27 @@ from bson.json_util import dumps
 from queryDAO import QueryDAO
 import summarizer_util
 
+app = Flask(__name__, static_url_path = "", static_folder = "static")
+#Allows the use of Access-Control-Allow-Origin
+#from flask.ext.cors import CORS
+#CORS(app, resources="/Query", headers='Content-Type')
+
+
 @app.route('/', methods=['GET'])
 def Index():	
-	
+
 	past_query_sources = QueryDAO.GetQuerySources()
 
 	return render_template('summarizeit.html', past_queries = past_query_sources)
 
 
-@app.rout("/Query", methods=['POST'])
+@app.route("/Query", methods=['POST'])
 def PostQuery():
 	query_uri = request.form["query_uri"].strip()
 	query_text = request.form["query_text"].strip()
+
+	print query_uri
+	print query_text
 
 	QueryDAO.SaveQuerySource(query_uri)
 

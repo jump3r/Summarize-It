@@ -29,8 +29,20 @@ tab: {
 */
 function onClickHandler(info, tab) {
   if (info.menuItemId == "user-context-selection") {        
-      //console.log(info.selectionText);
-      console.log(info["selectionText"]);
+		//console.log(info.selectionText);
+		console.log(info["selectionText"]);
+		var xml_http = new XMLHttpRequest();
+		xml_http.onreadystatechange=function() {
+
+			if (xml_http.readyState==4 && xml_http.status==200)
+			{			
+				console.log(xml_http.responseText);
+				alert(xml_http.responseText);
+			}
+		}
+		xml_http.open("POST","http://localhost:5000/Query",true);
+		xml_http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xml_http.send("query_text="+ info["selectionText"] + "&query_uri=" + info["pageUrl"]);
   }
 
 };
