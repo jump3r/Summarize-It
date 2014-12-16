@@ -1,6 +1,6 @@
 {
   "name": "Summarize it!",
-  "description": "Summarizes selected text",
+  "description": "Summarizes selected text on a webpage",
   "version": "0.7",
 
   "permissions": ["contextMenus"],

@@ -1,0 +1,1 @@
+web: gunicorn summarizeit:app --log-file=-
