@@ -28,7 +28,7 @@ tab: {
 
 */
 function onClickHandler(info, tab) {
-  if (info.menuItemId == "context:selection") {        
+  if (info.menuItemId == "user-context-selection") {        
       //console.log(info.selectionText);
       console.log(info["selectionText"]);
   }
@@ -37,10 +37,9 @@ function onClickHandler(info, tab) {
 
 chrome.runtime.onInstalled.addListener(function() {
 
-  chrome.contextMenus.create({"title": "Summarize it!", "contexts":["selection"], "id": "context:" + "selection"});
+  chrome.contextMenus.create({"title": "Summarize it!", "contexts":["selection"], "id": "user-context-selection"});
   chrome.contextMenus.create({"title": "Select Text To Summarize it!", "id": "NoSelection"});
 
 });
-
 
 chrome.contextMenus.onClicked.addListener(onClickHandler);
