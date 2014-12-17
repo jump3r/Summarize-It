@@ -1,13 +1,13 @@
 {
   "name": "Summarize it!",
   "description": "Summarizes selected text on a webpage",
-  "version": "0.7",
+  "version": "1.0",
 
   "permissions": ["contextMenus", "http://localhost:5000/Query"],
   
   "background": {
     "persistent": false,
-    "scripts": ["summarizeit.js"]
+    "scripts": ["summarizeit.js", "jquery-2.1.1.min.js"]
   },
   "manifest_version": 2
 }

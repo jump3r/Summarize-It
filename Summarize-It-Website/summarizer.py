@@ -1,5 +1,4 @@
 
-import urllib2
 import gensim
 from gensim import *
 
@@ -18,7 +17,7 @@ class Summarizer(object):
 	def ProcessArticleText(self, text):
 		original_text = text
 		
-		text = self.CleanStopWords(text)
+		#text = self.CleanStopWords(text)
 
 		mycorp = MyCorpus(text.split("."))
 		mycorp.dictionary.save("d.dict")
@@ -87,6 +86,8 @@ class MyCorpus(gensim.corpora.TextCorpus):
 			sentence = sentence.strip()
 			yield sentence.split(" ")	
 
+s = Summarizer()
+s.ProcessArticleText("Hello. World. How are you world.")
 '''
 star = Summarizer()
 hh = star.RetrieveSectionLinks("http://www.Summarizer.com/business.html")
