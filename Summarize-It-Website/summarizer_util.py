@@ -1,5 +1,4 @@
 
-
 def get_summary(query_text):
 
 	result = query_text.strip().split(".")
