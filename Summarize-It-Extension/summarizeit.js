@@ -29,14 +29,20 @@ tab: {
 */
 
 function createResponseWindow(responseText){
+
+	var popup_width = 500;//600;
+	var popup_height = 300;//400;
+
+	var left_margin = (screen.width - popup_width)/2;
+	var top_margin = (screen.height - popup_height)/2;
 	
 	chrome.windows.create(
-			{ url: chrome.extension.getURL("popup_window.html"), type: "popup", width: 800, height: 600 },
+		{ url: chrome.extension.getURL("popup_window.html"), type: "popup", width: popup_width, height: popup_height, left: left_margin, top: top_margin},
 
-			function() {								
-				chrome.runtime.sendMessage({ summarized_text: responseText }, function(response) {});	
-			}
-		);
+		function() {
+			chrome.runtime.sendMessage({ summarized_text: responseText }, function(response) {});	
+		}
+	);
 };
 
 

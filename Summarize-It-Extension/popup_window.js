@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener(
 			
 			var text = req.summarized_text;
 			console.log(text);
-			
+			$('#text-summary')[0].innerHTML = text;
 			/*
 			$('input[name="title"]').val(details.title);
 			$('input[name="url"]').val(details.url);
