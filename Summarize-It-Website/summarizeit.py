@@ -29,7 +29,7 @@ def PostQuery():
 	print query_uri
 	print query_text
 
-	QueryDAO.SaveQuerySource(query_uri)
+	#QueryDAO.SaveQuerySource(query_uri)
 
 	summary = summarizer_util.get_summary(query_text)
 	

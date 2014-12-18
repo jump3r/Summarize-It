@@ -28,34 +28,23 @@ tab: {
 
 */
 
-function appendModal(){
-	var modal = 
-	'<div id="dialog-message" title="Download complete">' +
-	'	<p>' +
-	'    Currently using <b>36% of your storage space</b>.'+
-	'  </p>' +
-	'</div>'
+function createResponseWindow(responseText){
+	
+	chrome.windows.create(
+			{ url: chrome.extension.getURL("popup_window.html"), type: "popup", width: 800, height: 600 },
 
-	$('body').append(modal);
-	/*
-	$(function() {
-	    $( "#dialog-message" ).dialog({
-	      	modal: true,
-	      	buttons: {
-		        Ok: function() {
-	          		$( this ).dialog( "close" );
-	        	}
-	      	}
-	    });
-  	});
-	*/
+			function() {								
+				chrome.runtime.sendMessage({ summarized_text: responseText }, function(response) {});	
+			}
+		);
 };
+
 
 function onClickHandler(info, tab) {
   if (info.menuItemId == "user-context-selection") {        
-		//console.log(info.selectionText);
-
+		
 		console.log(info["selectionText"]);
+		createResponseWindow(info["selectionText"]);
 		/*
 		var xml_http = new XMLHttpRequest();
 		xml_http.onreadystatechange=function() {
@@ -64,26 +53,23 @@ function onClickHandler(info, tab) {
 			{			
 				console.log(xml_http.responseText);
 				alert(xml_http.responseText);
-				
+				createResponseWindow(xml_http.responseText);
 			}
 		}
 		xml_http.open("POST","http://localhost:5000/Query",true);
 		xml_http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xml_http.send("query_text="+ info["selectionText"] + "&query_uri=" + info["pageUrl"]);
 		*/
-		//appendModal();
-		//$('body').append('<dialog id="myDialog">This is a dialog window</dialog>');
-		//document.getElementById("myDialog").showModal(); 
-		//$.modal("<div><h1>SimpleModal</h1></div>");
-		win = new Window({className: "mac_os_x", title: "Sample", width:200, height:150, destroyOnClose: true, recenterAuto:false});
-
-win.getContent().update("<h1>Hello world !!</h1>");
-win.showCenter();
-
-
+				
   }
 
 };
+function setUpModal(){
+	$('body').append('<dialog id="myDialog">This is a dialog window</dialog>');
+	console.log(document.getElementById("fatnav"));
+	document.getElementById("myDialog").showModal(); 
+	};
+
 
 chrome.runtime.onInstalled.addListener(function() {
 
